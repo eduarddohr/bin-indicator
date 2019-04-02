@@ -3,13 +3,18 @@ int echoPin = 3;    // Echo
 
 long calculateDistance(){
   long duration, cm;
-  digitalWrite(trigPin, LOW);
-  delayMicroseconds(5);
-  digitalWrite(trigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
-  duration = pulseIn(echoPin, HIGH);
-  cm = duration*0.034/2;
+  int goodRead = 0;
+  while(goodRead == 0){
+    digitalWrite(trigPin, LOW);
+    delayMicroseconds(5);
+    digitalWrite(trigPin, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(trigPin, LOW);
+    duration = pulseIn(echoPin, HIGH);
+    cm = duration*0.034/2;
+    if(cm < 300)
+      goodRead = 1;
+  }
   return cm;   
 }
 
