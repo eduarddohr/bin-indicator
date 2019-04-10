@@ -51,42 +51,32 @@ void loop() {
   int weight = 0;
 
   distance = calculateDistance();
-  String afisaj=String(distance)+"~";
-  //weight = scale.getGram();
-
+  String print_dist=String(distance);
+  weight = scale.getGram();
+  String print_weight=String(weight);
+ 
  if(Serial.available() >0){
   incomingByte = Serial.read();
   if(incomingByte == '1'){
-     digitalWrite(ledPin, HIGH);
-     /*
-     //incerc sa las sa se afiseze mai multe distante
-     int ok=10;
-     String sfarsit="~";
-     while(ok>0){
-      distance = calculateDistance();
-      String afisaj = String(distance);
-      Serial.print(afisaj);
-      Serial.print("\n");
-      ok--;
-      //delay(1000);
+     if(distance<10 && weight>100){
+      digitalWrite(ledPin, HIGH);
+      Serial.print("Bin is full~");
      }
-     */
-     Serial.print(afisaj);
-  }
+     else{
+     Serial.print("Distance: "+print_dist+" and weight: "+print_weight+"~");
+     }
+  
+  }   
   if(incomingByte == '0'){
      digitalWrite(ledPin, LOW);
   }
  }
- /*
-  EEBlue.print("w:");
-  EEBlue.println(String(weight));
-  Serial.print("weight: ");
-  Serial.println(weight);
-
+ 
+/*
   if(weight > 100)
     digitalWrite(ledPin, HIGH);
   else
     digitalWrite(ledPin, LOW);
-  */
+ */
   delay(1000);
 }

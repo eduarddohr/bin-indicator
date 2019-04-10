@@ -8,16 +8,16 @@
     <Button android:id="@+id/btnOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aprinde!" />
+        android:text="Start!" />
 
     <Button android:id="@+id/btnOff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stinge!" />
+        android:text="Stop!" />
 
     <TextView android:id="@+id/txtArduino"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aici se va afisa distanta :)" />
+        android:text="Aici se vor afisa datele :)" />
 
 </LinearLayout>

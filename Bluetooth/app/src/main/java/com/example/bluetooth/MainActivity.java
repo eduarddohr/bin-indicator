@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnOn, btnOff;
     TextView txtArduino;
     Handler h;
-    final int RECIEVE_MESSAGE = 1;  // status pt. handler
+    final int RECIEVE_MESSAGE = 1;  // status pt.
+    //private int flag=0;
     private BluetoothAdapter btAdapter = null;
     private BluetoothSocket btSocket = null;
     private StringBuilder sb = new StringBuilder();
@@ -49,15 +50,27 @@ public class MainActivity extends AppCompatActivity {
                         byte[] readBuf = (byte[]) msg.obj;
                         String strIncom = new String(readBuf, 0, msg.arg1);   //citesc buffer(1 byte)
                         // create string from bytes array
-                        sb.append(strIncom);                                         // formez stringu-ul
-                        int endOfLineIndex = sb.indexOf("~");
-                        if (endOfLineIndex > 0) {                                    // daca am ajuns la capat de mesaj
-                            String sbprint = sb.substring(0, endOfLineIndex);        // extrag string
+                        sb.append(strIncom);
+                        int endOfLineDist = sb.indexOf("~");    //DACA SCHIMBI IN ARDUINO CU Serial.println() POTI VERIFICA AICI CU \n\r( pt ca asta e enter).
+                        //int endOfLineWeight = sb.indexOf("*");
+
+                        if (endOfLineDist > 0 ) {                                    // daca am ajuns la capat de mesaj
+                            String sbprint = sb.substring(0, endOfLineDist);        // extrag string
                             sb.delete(0, sb.length());                               //sterg ce a fost in el
-                            txtArduino.setText("Distanta este: " + sbprint);         // scriu in casuta
+                            txtArduino.setText(sbprint+ " ");                          // scriu in casuta
                             btnOff.setEnabled(true);                                 //las butoanele sa se poata apasa
                             btnOn.setEnabled(true);
                         }
+                        /*
+                        if(endOfLineWeight > 0 ){                                       //daca am ajuns la capat de mesaj greutate
+                            String sbprint = sb.substring(0, endOfLineWeight);        // extrag string
+                            sb.delete(0, sb.length());                           //sterg ce a fost in el
+                            txtArduino.setText("Greutatea este: " + sbprint+ " ");         // scriu in casuta
+                            btnOff.setEnabled(true);                                 //las butoanele sa se poata apasa
+                            btnOn.setEnabled(true);
+                        }
+                        */
+
                         break;
                 }
             };
@@ -74,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //btnOff.setEnabled(false);
                 mConnectedThread.write("0");    // trimit "2" prin bluetooth
-                txtArduino.setText("Distanta este: " + "");
+                txtArduino.setText("");
             }
         });
     }
