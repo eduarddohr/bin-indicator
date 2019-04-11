@@ -51,13 +51,14 @@ public class MainActivity extends AppCompatActivity {
                         String strIncom = new String(readBuf, 0, msg.arg1);   //citesc buffer(1 byte)
                         // create string from bytes array
                         sb.append(strIncom);
-                        int endOfLineDist = sb.indexOf("~");    //DACA SCHIMBI IN ARDUINO CU Serial.println() POTI VERIFICA AICI CU \n\r( pt ca asta e enter).
+                        int endOfLineDist = sb.indexOf("~");    //DACA SCHIMBI IN ARDUINO CU Serial.println() POTI VERIFICA AICI CU \n\r( pt. ca asta e enter).
                         //int endOfLineWeight = sb.indexOf("*");
 
                         if (endOfLineDist > 0 ) {                                    // daca am ajuns la capat de mesaj
                             String sbprint = sb.substring(0, endOfLineDist);        // extrag string
                             sb.delete(0, sb.length());                               //sterg ce a fost in el
-                            txtArduino.setText(sbprint+ " ");                          // scriu in casuta
+                            txtArduino.setText(sbprint);                          // scriu in casuta
+                            //txtArduino.setText("\n");
                             btnOff.setEnabled(true);                                 //las butoanele sa se poata apasa
                             btnOn.setEnabled(true);
                         }
