@@ -65,18 +65,10 @@ void loop() {
      else{
      Serial.print("Distance: "+print_dist+" and weight: "+print_weight+"~");
      }
-  
   }   
   if(incomingByte == '0'){
      digitalWrite(ledPin, LOW);
   }
  }
- 
-/*
-  if(weight > 100)
-    digitalWrite(ledPin, HIGH);
-  else
-    digitalWrite(ledPin, LOW);
- */
   delay(1000);
 }
