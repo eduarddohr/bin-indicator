@@ -4,8 +4,8 @@
 //led
 #define ledPin 12
 //bluetooth
-#define rxPin 1
-#define txPin 0
+#define rxPin 8
+#define txPin 7
 //distance
 #define trigPin 2
 #define echoPin 3
@@ -54,7 +54,8 @@ void loop() {
   String print_dist=String(distance);
   weight = scale.getGram();
   String print_weight=String(weight);
- 
+
+ /*
  if(Serial.available() >0){
   incomingByte = Serial.read();
   if(incomingByte == '1'){
@@ -69,6 +70,10 @@ void loop() {
   if(incomingByte == '0'){
      digitalWrite(ledPin, LOW);
   }
- }
+  }
+  */
+  Serial.println("Distance: "+print_dist+" and weight: "+print_weight+"~");
+  EEBlue.println("Distance: "+print_dist+" and weight: "+print_weight+"~");
+ 
   delay(1000);
 }
