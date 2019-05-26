@@ -5,26 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnOn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@color/Green"
-        android:paddingBottom="0dp"
-        android:text="Show!"
-        android:textColor="@color/Black" />
-
-    <Button
-        android:id="@+id/btnOff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@color/Red"
-        android:text="Clear!"
-        android:textColor="@color/Black" />
 
     <TextView
         android:id="@+id/txtArduino"
@@ -34,6 +14,26 @@
         android:paddingTop="20dp"
         android:text="INCOMING DATA"
         android:maxLines="10"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtArduino2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:maxLines="10"
+        android:paddingTop="20dp"
+        android:text="INCOMING DATA"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtArduino3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:maxLines="10"
+        android:paddingTop="20dp"
+        android:text="INCOMING DATA"
         android:textSize="20sp" />
 
 </LinearLayout>
