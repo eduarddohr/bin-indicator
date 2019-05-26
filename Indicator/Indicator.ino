@@ -28,7 +28,7 @@ long calculateDistance(){
     digitalWrite(trigPin, LOW);
     duration = pulseIn(echoPin, HIGH);
     cm = duration*0.034/2;
-    if(cm < 300)
+    if(cm < 30)
       goodRead = 1;
   }
   return cm;   
@@ -54,26 +54,16 @@ void loop() {
   String print_dist=String(distance);
   weight = scale.getGram();
   String print_weight=String(weight);
-
- /*
- if(Serial.available() >0){
-  incomingByte = Serial.read();
-  if(incomingByte == '1'){
-     if(distance<10 && weight>100){
-      digitalWrite(ledPin, HIGH);
-      Serial.print("Bin is full~");
-     }
-     else{
-     Serial.print("Distance: "+print_dist+" and weight: "+print_weight+"~");
-     }
-  }   
+  
+  EEBlue.print(print_dist+" "+print_weight+"~");
+       
   if(incomingByte == '0'){
-     digitalWrite(ledPin, LOW);
+     //digitalWrite(ledPin, LOW);
   }
-  }
-  */
+  
+   
   Serial.println("Distance: "+print_dist+" and weight: "+print_weight+"~");
-  EEBlue.println("Distance: "+print_dist+" and weight: "+print_weight+"~");
+ // EEBlue.println("Distance: "+print_dist+" and weight: "+print_weight+"~");
  
-  delay(1000);
+  delay(3000);
 }

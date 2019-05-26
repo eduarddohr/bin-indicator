@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                         //int endOfLineWeight = sb.indexOf("*");
 
                         if (endOfLineDist > 0 ) {                                    // daca am ajuns la capat de mesaj
-                            String sbprint = sb.substring(0, endOfLineDist);        // extrag string
+                            String sbprint = sb.substring(0, endOfLineDist);        // EXTRAG STRING PE CARE IL TZRIMIT MAI DEPARTE CUMVA
                             sb.delete(0, sb.length());                               //sterg ce a fost in el
                             txtArduino.setText(sbprint);                          // scriu in casuta
                             //txtArduino.setText("\n");
