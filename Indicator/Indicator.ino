@@ -2,7 +2,7 @@
 #include <hx711.h>
 
 //led
-#define ledPin 12
+#define ledPin 5
 //bluetooth
 #define rxPin 8
 #define txPin 7
@@ -13,9 +13,9 @@
 #define dtPin A2 
 #define sckPin A3
 
-  SoftwareSerial EEBlue(rxPin, txPin);
-  Hx711 scale(dtPin, sckPin);
-  char incomingByte;
+SoftwareSerial EEBlue(rxPin, txPin);
+Hx711 scale(dtPin, sckPin);
+char incomingByte;
 
 long calculateDistance(){
   long duration, cm;
@@ -56,12 +56,16 @@ void loop() {
   String print_weight=String(weight);
   
   EEBlue.print(print_dist+" "+print_weight+"~");
-       
-  if(incomingByte == '0'){
-     //digitalWrite(ledPin, LOW);
-  }
+  float cD = 90 - (distance * 5);
+  float cW = (float) (weight * 0.05);
+  float Capacity = max(cD, cW);
   
-   
+
+  if(Capacity > 80){
+      digitalWrite(ledPin, HIGH);
+    }
+    else
+      digitalWrite(ledPin, LOW);
   Serial.println("Distance: "+print_dist+" and weight: "+print_weight+"~");
  // EEBlue.println("Distance: "+print_dist+" and weight: "+print_weight+"~");
  
